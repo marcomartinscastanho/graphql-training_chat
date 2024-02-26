@@ -6,6 +6,11 @@ type Mutation {
   addMessage(text: String!): Message
 }
 
+type Subscription {
+  # by convention, the subscription name is the event that triggers the subscription
+  messageAdded: Message
+}
+
 type Message {
   id: ID!
   user: String!
