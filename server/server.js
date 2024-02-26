@@ -42,7 +42,7 @@ app.use(
 // but does not support subscriptions
 // for that we need websockets.
 // In websockets, the client creates a connection to the server that stays open (contrary to http)
-// and the server uses that connection to update the client whenever there's new data
+// and the server uses that connection to update the client whenever an event occurs
 // Anyway, websocket needs http server because the request to establish the connection is an http requests
 const httpServer = createHttpServer(app);
 const wsServer = new WebSocketServer({ server: httpServer, path: "/graphql" });
