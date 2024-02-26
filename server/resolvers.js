@@ -33,7 +33,10 @@ export const resolvers = {
     messageAdded: {
       // this listens to the MESSAGE_ADDED event
       // and notifies the clients that have subscribed to this event
-      subscribe: () => pubSub.asyncIterator("MESSAGE_ADDED"),
+      subscribe: (_root, _args, { user }) => {
+        if (!user) throw unauthorizedError();
+        return pubSub.asyncIterator("MESSAGE_ADDED");
+      },
     },
   },
 };
